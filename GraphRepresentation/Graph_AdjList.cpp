@@ -4,6 +4,7 @@ istream& operator>>(istream& m, Graph_AdjList& a)
 {
 	cout << "Nhap so dinh: ";
 	m >> a.V;
+	// Cap phat mang gom V (dinh) phan tu 
 	a.G = new list<int>[a.V];
 
 	int E;
@@ -12,7 +13,10 @@ istream& operator>>(istream& m, Graph_AdjList& a)
 	for (int i = 0; i < E; i++)
 	{
 		int v1, v2;
+		// Nhap canh giua v1 va v2
 		m >> v1 >> v2;
+
+		// Them canh v1-v2 vao do thi
 		a.addEdge(v1, v2);
 	}
 	return m;
@@ -33,6 +37,7 @@ ostream& operator<<(ostream& m, const Graph_AdjList& a)
 }
 void Graph_AdjList::addEdge(int _start, int _end)
 {
+	// Them dinh v2 vao G[v1] (Danh sach cac dinh ke v1) 
 	(this->G[_start]).push_back(_end);
 	//(this->G[_end]).push_back(_start); // if Graph is undirected
 }
